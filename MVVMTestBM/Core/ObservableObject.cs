@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace MVVMTestBM.Core
+namespace CompletedMVVMTestBM.Core
 {
     public class ObservableObject : INotifyPropertyChanged
     {

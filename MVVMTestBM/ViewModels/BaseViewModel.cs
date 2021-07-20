@@ -1,8 +1,8 @@
-﻿using MVVMTestBM.Core;
+﻿using CompletedMVVMTestBM.Core;
 
 using System;
 
-namespace MVVMTestBM.ViewModels
+namespace CompletedMVVMTestBM.ViewModels
 {
     public class BaseViewModel : ObservableObject, IDisposable
     {

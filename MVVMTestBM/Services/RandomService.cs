@@ -1,8 +1,8 @@
-﻿using MVVMTestBM;
-using MVVMTestBM.Models;
-using MVVMTestBM.Models.Interfaces;
-using MVVMTestBM.Repositories;
-using MVVMTestBM.Services.Interfaces;
+﻿using CompletedMVVMTestBM;
+using CompletedMVVMTestBM.Models;
+using CompletedMVVMTestBM.Models.Interfaces;
+using CompletedMVVMTestBM.Repositories;
+using CompletedMVVMTestBM.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

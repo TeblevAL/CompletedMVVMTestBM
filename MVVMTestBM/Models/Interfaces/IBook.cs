@@ -1,4 +1,4 @@
-﻿namespace MVVMTestBM.Models.Interfaces
+﻿namespace CompletedMVVMTestBM.Models.Interfaces
 {
     public interface IBook
     {

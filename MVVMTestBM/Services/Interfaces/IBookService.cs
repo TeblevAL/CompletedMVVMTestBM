@@ -1,6 +1,6 @@
-﻿using MVVMTestBM.Models.Interfaces;
+﻿using CompletedMVVMTestBM.Models.Interfaces;
 
-namespace MVVMTestBM.Services.Interfaces
+namespace CompletedMVVMTestBM.Services.Interfaces
 {
     public interface IBookService
     {

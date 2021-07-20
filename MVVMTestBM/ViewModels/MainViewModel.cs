@@ -1,15 +1,14 @@
 ﻿using CompletedMVVMTestBM.Services;
 using CompletedMVVMTestBM.Services.Interfaces;
-using MVVMTestBM.Core;
-using MVVMTestBM.Models;
-using MVVMTestBM.Models.Interfaces;
-using MVVMTestBM.Repositories;
-using MVVMTestBM.Services.Interfaces;
+using CompletedMVVMTestBM.Core;
+using CompletedMVVMTestBM.Models;
+using CompletedMVVMTestBM.Models.Interfaces;
+using CompletedMVVMTestBM.Repositories;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
-namespace MVVMTestBM.ViewModels
+namespace CompletedMVVMTestBM.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
@@ -21,6 +20,8 @@ namespace MVVMTestBM.ViewModels
 
             _filtrationService = new FiltrationService(_bookRepository);
 
+            _randomService = new RandomService(_bookService,_bookRepository);
+
             Books = _bookRepository.Books;
 
             BookForEdit = new Book();
@@ -31,6 +32,8 @@ namespace MVVMTestBM.ViewModels
         private readonly IBookService _bookService;
 
         private IFiltrationService _filtrationService;
+
+        private RandomService _randomService;
 
         private ObservableCollection<IBook> _books;
 
@@ -132,6 +135,23 @@ namespace MVVMTestBM.ViewModels
         {
             Books = _bookRepository.Books;
             SearchText = string.Empty;
+        }
+
+        private ICommand _randomTurnOnCommand;
+        public ICommand RandomTurnOnCommand => _randomTurnOnCommand ??= new RelayCommand(RandomTurnOn, o => _bookRepository.Books.Count > 0 && 
+                                                                                                            !RandomService.isRunning);
+
+        private void RandomTurnOn(object commandParameter)
+        {
+            _randomService.Start();
+        }
+
+        private ICommand _randomTurnOffCommand;
+        public ICommand RandomTurnOffCommand => _randomTurnOffCommand ??= new RelayCommand(RandomTurnOff, o => RandomService.isRunning);
+
+        private void RandomTurnOff(object commandParameter)
+        {
+            _randomService.Break();
         }
     }
 }

@@ -2,12 +2,12 @@
 
 using System;
 using System.Windows;
-using MVVMTestBM.Repositories;
-using MVVMTestBM.Services;
-using MVVMTestBM.Services.Interfaces;
-using MVVMTestBM.ViewModels;
+using CompletedMVVMTestBM.Repositories;
+using CompletedMVVMTestBM.Services;
+using CompletedMVVMTestBM.Services.Interfaces;
+using CompletedMVVMTestBM.ViewModels;
 
-namespace MVVMTestBM
+namespace CompletedMVVMTestBM
 {
     /// <summary>
     /// Interaction logic for App.xaml

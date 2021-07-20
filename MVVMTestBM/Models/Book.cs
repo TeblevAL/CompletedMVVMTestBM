@@ -1,8 +1,8 @@
 ﻿using System;
-using MVVMTestBM.Core;
-using MVVMTestBM.Models.Interfaces;
+using CompletedMVVMTestBM.Core;
+using CompletedMVVMTestBM.Models.Interfaces;
 
-namespace MVVMTestBM.Models
+namespace CompletedMVVMTestBM.Models
 {
     public class Book : ObservableObject, IBook
     {

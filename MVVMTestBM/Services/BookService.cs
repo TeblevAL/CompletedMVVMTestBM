@@ -1,10 +1,10 @@
-﻿using MVVMTestBM.Models.Interfaces;
-using MVVMTestBM.Repositories;
-using MVVMTestBM.Services.Interfaces;
+﻿using CompletedMVVMTestBM.Models.Interfaces;
+using CompletedMVVMTestBM.Repositories;
+using CompletedMVVMTestBM.Services.Interfaces;
 
 using System.Linq;
 
-namespace MVVMTestBM.Services
+namespace CompletedMVVMTestBM.Services
 {
     public class BookService : IBookService
     {

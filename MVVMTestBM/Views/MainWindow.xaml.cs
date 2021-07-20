@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-using MVVMTestBM.ViewModels;
+using CompletedMVVMTestBM.ViewModels;
 
 using System.Windows;
 
-namespace MVVMTestBM.Views
+namespace CompletedMVVMTestBM.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

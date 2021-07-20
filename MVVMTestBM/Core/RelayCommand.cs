@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MVVMTestBM.Core
+namespace CompletedMVVMTestBM.Core
 {
     public class RelayCommand : ICommand
     {

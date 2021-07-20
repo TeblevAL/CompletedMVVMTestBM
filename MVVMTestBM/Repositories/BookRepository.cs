@@ -1,9 +1,9 @@
-﻿using MVVMTestBM.Core;
-using MVVMTestBM.Models.Interfaces;
+﻿using CompletedMVVMTestBM.Core;
+using CompletedMVVMTestBM.Models.Interfaces;
 
 using System.Collections.ObjectModel;
 
-namespace MVVMTestBM.Repositories
+namespace CompletedMVVMTestBM.Repositories
 {
     public class BookRepository : ObservableObject
     {
