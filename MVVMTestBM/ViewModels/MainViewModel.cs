@@ -3,6 +3,7 @@ using MVVMTestBM.Models;
 using MVVMTestBM.Models.Interfaces;
 using MVVMTestBM.Repositories;
 using MVVMTestBM.Services.Interfaces;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -12,16 +13,30 @@ namespace MVVMTestBM.ViewModels
     {
         public MainViewModel(BookRepository bookRepository, IBookService bookService)
         {
-            BookRepository = bookRepository;
+            _bookRepository = bookRepository;
 
             _bookService = bookService;
+
+            Books = _bookRepository.Books;
 
             BookForEdit = new Book();
         }
 
-        public BookRepository BookRepository { get; }
+        private BookRepository _bookRepository;
 
         private readonly IBookService _bookService;
+
+        private ObservableCollection<IBook> _books;
+
+        public ObservableCollection<IBook> Books
+        {
+            get => _books;
+            set
+            {
+                _books = value;
+                OnPropertyChanged();
+            }
+        }
 
         private IBook _selectedBook;
 

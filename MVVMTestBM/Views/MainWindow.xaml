@@ -32,7 +32,7 @@
                         Command="{Binding ResetSearchCommand}"/>
             </StackPanel>
             <ListView Grid.Row="1" 
-                      ItemsSource="{Binding BookRepository.Books}" 
+                      ItemsSource="{Binding Books}" 
                       SelectedItem="{Binding SelectedBook}" 
                       IsSynchronizedWithCurrentItem="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
