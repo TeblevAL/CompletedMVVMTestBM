@@ -14,7 +14,8 @@
         <ListView Grid.Column="0" 
                   ItemsSource="{Binding BookRepository.Books}" 
                   SelectedItem="{Binding SelectedBook}" 
-                  IsSynchronizedWithCurrentItem="True">
+                  IsSynchronizedWithCurrentItem="True"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Width="82">
