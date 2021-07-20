@@ -11,40 +11,61 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" 
-                  ItemsSource="{Binding BookRepository.Books}" 
-                  SelectedItem="{Binding SelectedBook}" 
-                  IsSynchronizedWithCurrentItem="True"
-                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="82">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Border 
-                            Grid.Row="0"
-                            Height="100"
-                            Background="LightGray" 
-                            Margin="8">
-                            <TextBlock Text="Книга" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                        <TextBlock Grid.Row="1"
-                                   Margin="0 0 0 8"
-                                   Text="{Binding Name}" />
-                        <TextBlock Grid.Row="2"
-                                   Text="{Binding Author}" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-        </ListView>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBox Margin="0 5"
+                         Width="170"
+                         Text="{Binding SearchText}"/>
+                <Button Margin="10 5 0 5"
+                        Width="60"
+                        Content="Поиск"
+                        Command="{Binding SearchBooksCommand}"/>
+                <Button Margin="5 5 10 5"
+                        Width="60"
+                        Content="Сбросить"
+                        Command="{Binding ResetSearchCommand}"/>
+            </StackPanel>
+            <ListView Grid.Row="1" 
+                      ItemsSource="{Binding BookRepository.Books}" 
+                      SelectedItem="{Binding SelectedBook}" 
+                      IsSynchronizedWithCurrentItem="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="82">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border 
+                                Grid.Row="0"
+                                Height="100"
+                                Background="LightGray" 
+                                Margin="8">
+                                <TextBlock Text="Книга" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <TextBlock Grid.Row="1"
+                                       Margin="0 0 0 8"
+                                       Text="{Binding Name}" />
+                            <TextBlock Grid.Row="2"
+                                       Text="{Binding Author}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+        </Grid>
         <Grid Grid.Column="1">
             <StackPanel>
                 <StackPanel>
