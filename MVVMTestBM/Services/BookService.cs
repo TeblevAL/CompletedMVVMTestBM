@@ -25,6 +25,19 @@ namespace MVVMTestBM.Services
             _bookRepository.Books.Add(book);
         }
 
+        public void Edit(IBook book, IBook editedBook)
+        {
+            IBook bookToEdit = _bookRepository.Books.FirstOrDefault(b => b.Id == book.Id);
+
+            if (bookToEdit is null || editedBook is null)
+            {
+                return;
+            }
+
+            bookToEdit.Name = editedBook.Name;
+            bookToEdit.Author = editedBook.Author;
+        }
+
         public void Delete(IBook book)
         {
             IBook bookToRemove = _bookRepository.Books.FirstOrDefault(b => b.Id == book.Id);
@@ -36,5 +49,6 @@ namespace MVVMTestBM.Services
 
             _bookRepository.Books.Remove(bookToRemove);
         }
+
     }
 }
