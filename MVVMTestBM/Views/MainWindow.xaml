@@ -1,0 +1,64 @@
+﻿<Window x:Class="MVVMTestBM.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTestBM" xmlns:viewmodels="clr-namespace:MVVMTestBM.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView Grid.Column="0" 
+                  ItemsSource="{Binding BookRepository.Books}" 
+                  SelectedItem="{Binding SelectedBook}" 
+                  IsSynchronizedWithCurrentItem="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="82">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border 
+                            Grid.Row="0"
+                            Height="100"
+                            Background="LightGray" 
+                            Margin="8">
+                            <TextBlock Text="Книга" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <TextBlock Grid.Row="1"
+                                   Margin="0 0 0 8"
+                                   Text="{Binding Name}" />
+                        <TextBlock Grid.Row="2"
+                                   Text="{Binding Author}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Grid Grid.Column="1">
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Название:"/>
+                    <TextBox Text="{Binding BookForEdit.Name}"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Автор:"/>
+                    <TextBox Text="{Binding BookForEdit.Author}"/>
+                </StackPanel>
+                <StackPanel>
+                    <Button Content="Добавить" Command="{Binding AddBookCommand}"/>
+                    <Button Content="Удалить" Command="{Binding DeleteBookCommand}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
