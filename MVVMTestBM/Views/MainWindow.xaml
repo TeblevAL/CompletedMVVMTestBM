@@ -78,6 +78,7 @@
                 </StackPanel>
                 <StackPanel>
                     <Button Content="Добавить" Command="{Binding AddBookCommand}"/>
+                    <Button Content="Редактировать" Command="{Binding EditBookCommand}"/>
                     <Button Content="Удалить" Command="{Binding DeleteBookCommand}"/>
                 </StackPanel>
             </StackPanel>

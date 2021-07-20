@@ -95,6 +95,20 @@ namespace MVVMTestBM.ViewModels
             BookForEdit = new Book();
         }
 
+        private ICommand _editBookCommand;
+        public ICommand EditBookCommand => _editBookCommand ??= new RelayCommand(EditBook, o => SelectedBook is not null);
+
+        public void EditBook(object commandParameter)
+        {
+            if (string.IsNullOrWhiteSpace(BookForEdit.Name))
+            {
+                MessageBox.Show("У книги должно быть название");
+                return;
+            }
+
+            _bookService.Edit(SelectedBook,BookForEdit);
+        }
+
         private ICommand _deleteBookCommand;
         public ICommand DeleteBookCommand => _deleteBookCommand ??= new RelayCommand(DeleteBook, o => SelectedBook is not null);
 
@@ -104,7 +118,7 @@ namespace MVVMTestBM.ViewModels
         }
 
         private ICommand _searchBooksCommand;
-        public ICommand SearchBooksCommand => _searchBooksCommand ??= new RelayCommand(SearchBooks, o => Books.Count > 0);
+        public ICommand SearchBooksCommand => _searchBooksCommand ??= new RelayCommand(SearchBooks, o => _bookRepository.Books.Count > 0);
 
         private void SearchBooks(object commandParameter)
         {
