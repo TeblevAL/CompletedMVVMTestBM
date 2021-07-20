@@ -3,6 +3,7 @@ using MVVMTestBM.Models;
 using MVVMTestBM.Models.Interfaces;
 using MVVMTestBM.Repositories;
 using MVVMTestBM.Services.Interfaces;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MVVMTestBM.ViewModels
@@ -51,6 +52,11 @@ namespace MVVMTestBM.ViewModels
 
         private void AddBook(object commandParameter)
         {
+            if (string.IsNullOrWhiteSpace(BookForEdit.Name))
+            {
+                MessageBox.Show("У книги должно быть название");
+                return;
+            }
             _bookService.Add(BookForEdit);
 
             BookForEdit = new Book();
