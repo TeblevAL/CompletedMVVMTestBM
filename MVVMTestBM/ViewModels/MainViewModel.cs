@@ -1,4 +1,6 @@
-﻿using MVVMTestBM.Core;
+﻿using CompletedMVVMTestBM.Services;
+using CompletedMVVMTestBM.Services.Interfaces;
+using MVVMTestBM.Core;
 using MVVMTestBM.Models;
 using MVVMTestBM.Models.Interfaces;
 using MVVMTestBM.Repositories;
@@ -17,6 +19,8 @@ namespace MVVMTestBM.ViewModels
 
             _bookService = bookService;
 
+            _filtrationService = new FiltrationService(_bookRepository);
+
             Books = _bookRepository.Books;
 
             BookForEdit = new Book();
@@ -25,6 +29,8 @@ namespace MVVMTestBM.ViewModels
         private BookRepository _bookRepository;
 
         private readonly IBookService _bookService;
+
+        private IFiltrationService _filtrationService;
 
         private ObservableCollection<IBook> _books;
 
@@ -62,6 +68,18 @@ namespace MVVMTestBM.ViewModels
             }
         }
 
+        private string _searchText;
+
+        public string SearchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ICommand _addBookCommand;
         public ICommand AddBookCommand => _addBookCommand ??= new RelayCommand(AddBook);
 
@@ -83,6 +101,23 @@ namespace MVVMTestBM.ViewModels
         private void DeleteBook(object commandParameter)
         {
             _bookService.Delete(SelectedBook);
+        }
+
+        private ICommand _searchBooksCommand;
+        public ICommand SearchBooksCommand => _searchBooksCommand ??= new RelayCommand(SearchBooks, o => Books.Count > 0);
+
+        private void SearchBooks(object commandParameter)
+        {
+            Books = new ObservableCollection<IBook>(_filtrationService.GetBooksByName(SearchText));
+        }
+
+        private ICommand _resetSearchCommand;
+        public ICommand ResetSearchCommand => _resetSearchCommand ??= new RelayCommand(ResetSearch);
+
+        private void ResetSearch(object commandParameter)
+        {
+            Books = _bookRepository.Books;
+            SearchText = string.Empty;
         }
     }
 }
